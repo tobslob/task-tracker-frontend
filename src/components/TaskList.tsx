@@ -4,6 +4,7 @@ import { Task, TaskListResponse } from '../lib/types';
 import { useTaskStore } from '../lib/task-store';
 import { TaskCard } from './TaskCard';
 import { TaskFilterBar } from './TaskFilterBar';
+import { Button } from '../ui';
 
 const PAGE_SIZE = 20;
 
@@ -12,7 +13,7 @@ export const TaskList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const { filters, notifyUpdate } = useTaskStore();
+  const { filters, notifyUpdate, lastUpdated } = useTaskStore();
 
   useEffect(() => {
     setPage(1);
@@ -41,10 +42,9 @@ export const TaskList: React.FC = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);
+  }, [fetchTasks, lastUpdated]);
 
   const handleTaskUpdate = () => {
-    fetchTasks();
     notifyUpdate();
   };
 
@@ -69,21 +69,21 @@ export const TaskList: React.FC = () => {
       )}
       {totalPages > 1 && (
         <div className="mt-4 flex justify-center gap-2">
-          <button
+          <Button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-3 py-1 border rounded disabled:opacity-50"
+            className="disabled:opacity-50"
           >
             Previous
-          </button>
+          </Button>
           <span className="px-3 py-1 text-sm font-medium">{page}</span>
-          <button
+          <Button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="px-3 py-1 border rounded disabled:opacity-50"
+            className="disabled:opacity-50"
           >
             Next
-          </button>
+          </Button>
         </div>
       )}
     </div>

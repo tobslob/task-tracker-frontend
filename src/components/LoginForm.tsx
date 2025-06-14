@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-hot-toast";
+import { Input, Button } from "../ui";
 
 export const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -26,10 +27,9 @@ export const LoginForm: React.FC = () => {
         <label htmlFor="email" className="block text-sm font-medium">
           Email
         </label>
-        <input
+        <Input
           id="email"
           type="email"
-          className="w-full border rounded-md p-2"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -39,22 +39,21 @@ export const LoginForm: React.FC = () => {
         <label htmlFor="password" className="block text-sm font-medium">
           Password
         </label>
-        <input
+        <Input
           id="password"
           type="password"
-          className="w-full border rounded-md p-2"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
-      <button
+      <Button
         type="submit"
-        className="w-full py-2 bg-green-700 text-white rounded-md"
+        className="w-full py-2 bg-green-700 text-white"
         disabled={isLoading}
       >
         {isLoading ? "Loading..." : "Login"}
-      </button>
+      </Button>
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { ApiClient } from "../lib/api-client";
 import { useTaskStore } from "../lib/task-store";
 import type { TaskPriority } from "../lib/types";
 import { toast } from "react-hot-toast";
+import { Input, Button } from "../ui";
 
 interface Props {
   open: boolean;
@@ -63,9 +64,8 @@ export const CreateTaskDialog: React.FC<Props> = ({ open, onClose }) => {
             <label className="block text-sm mb-1" htmlFor="title">
               Title
             </label>
-            <input
+            <Input
               id="title"
-              className="w-full border rounded-md p-2"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -102,31 +102,27 @@ export const CreateTaskDialog: React.FC<Props> = ({ open, onClose }) => {
             <label className="block text-sm mb-1" htmlFor="due">
               Due Date
             </label>
-            <input
+            <Input
               id="due"
               type="date"
-              className="w-full border rounded-md p-2"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               required
             />
           </div>
           <div className="flex justify-end gap-2 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-3 py-1 border rounded"
-            >
+            <Button type="button" onClick={onClose}
+              className="px-3 py-1">
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               type="submit"
               disabled={loading}
-              className="px-3 py-1 border rounded bg-blue-600 text-white disabled:opacity-50"
+              className="px-3 py-1 bg-blue-600 text-white disabled:opacity-50"
             >
               {loading ? "Saving..." : "Create"}
-            </button>
-          </div>
+            </Button>
+         </div>
         </form>
       </div>
     </div>
