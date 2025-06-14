@@ -13,7 +13,7 @@ export const TaskList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const { filters, notifyUpdate } = useTaskStore();
+  const { filters, notifyUpdate, lastUpdated } = useTaskStore();
 
   useEffect(() => {
     setPage(1);
@@ -42,10 +42,9 @@ export const TaskList: React.FC = () => {
 
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);
+  }, [fetchTasks, lastUpdated]);
 
   const handleTaskUpdate = () => {
-    fetchTasks();
     notifyUpdate();
   };
 
