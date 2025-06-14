@@ -4,6 +4,7 @@ import { Task } from "../lib/types";
 import { ApiClient } from "../lib/api-client";
 import { EditTaskDialog } from "./EditTaskDialog";
 import { toast } from "react-hot-toast";
+import { Card, Button } from "../ui";
 
 export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
   task,
@@ -62,7 +63,7 @@ export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
   };
 
   return (
-    <div className="border rounded-md p-4 shadow-sm hover:shadow-md transition-shadow relative">
+    <Card className="shadow-sm hover:shadow-md transition-shadow relative">
       <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
         <div className="flex-1">
           <h3 className="font-semibold text-lg mb-2 break-words">
@@ -88,34 +89,34 @@ export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
           </div>
           <div className="flex gap-2 mb-2">
             {task.status !== "completed" && (
-              <button
+              <Button
                 onClick={() => handleStatusChange("completed")}
-                className="px-2 py-1 text-sm border rounded"
+                className="px-2 py-1 text-sm"
               >
                 Mark Complete
-              </button>
+              </Button>
             )}
             {task.status === "pending" && (
-              <button
+              <Button
                 onClick={() => handleStatusChange("in-progress")}
-                className="px-2 py-1 text-sm border rounded"
+                className="px-2 py-1 text-sm"
               >
                 Start
-              </button>
+              </Button>
             )}
           </div>
         </div>
         <div className="relative">
-          <button
+          <Button
             onClick={() => setMenuOpen((o) => !o)}
-            className="p-1 border rounded"
+            className="p-1"
             aria-label="Menu"
           >
             <MoreHorizontal className="h-4 w-4" />
-          </button>
+          </Button>
           {menuOpen && (
             <div className="absolute right-0 mt-2 border bg-white rounded shadow-md text-sm z-10">
-              <button
+              <Button
                 onClick={() => {
                   setShowEdit(true);
                   setMenuOpen(false);
@@ -123,13 +124,13 @@ export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
                 className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
               >
                 Edit
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleDelete}
                 className="block px-4 py-2 hover:bg-gray-100 w-full text-left text-red-600"
               >
                 Delete
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -139,6 +140,6 @@ export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
         open={showEdit}
         onClose={() => setShowEdit(false)}
       />
-    </div>
+    </Card>
   );
 };
