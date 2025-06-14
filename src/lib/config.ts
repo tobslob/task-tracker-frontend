@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  BASE_URL: process.env.REACT_APP_API_URL || "http://localhost:8000",
+  BASE_URL: process.env.REACT_APP_API_URL,
   API_V1_STR: "/api/v1",
   AUTH: {
     LOGIN: "/auth/sign-in",
