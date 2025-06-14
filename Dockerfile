@@ -4,6 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+# Option A: create env file before build
+RUN echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env.production
+RUN npm run build
 RUN npm run build
 
 # Stage 2: Serve with NGINX
