@@ -11,8 +11,8 @@ const LoginPage: React.FC = () => (
       <div className="p-6 space-y-4">
         <div className="bg-gray-100 border border-gray-200 rounded-md p-4 text-sm">
           <strong>Demo Account:</strong><br />
-          Email: kazeem.o.odutola@gmail.com<br />
-          Password: Kazeem27$<br />
+          Email: demo@email.com<br />
+          Password: password123<br />
           superuser: true
         </div>
         <LoginForm />
