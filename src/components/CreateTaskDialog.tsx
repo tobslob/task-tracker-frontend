@@ -3,7 +3,7 @@ import { ApiClient } from "../lib/api-client";
 import { useTaskStore } from "../lib/task-store";
 import type { TaskPriority } from "../lib/types";
 import { toast } from "react-hot-toast";
-import { Input, Button } from "../ui";
+import { Input, Button } from "./ui";
 
 interface Props {
   open: boolean;
@@ -111,18 +111,17 @@ export const CreateTaskDialog: React.FC<Props> = ({ open, onClose }) => {
             />
           </div>
           <div className="flex justify-end gap-2 pt-2">
-            <Button type="button" onClick={onClose}
-              className="px-3 py-1">
+            <Button type="button" onClick={onClose} className="px-3 py-1">
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={loading}
-              className="px-3 py-1 bg-blue-600 text-white disabled:opacity-50"
+              className="px-3 py-1 bg-green-700 text-white disabled:opacity-50"
             >
               {loading ? "Saving..." : "Create"}
             </Button>
-         </div>
+          </div>
         </form>
       </div>
     </div>

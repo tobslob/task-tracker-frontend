@@ -4,7 +4,7 @@ import { Task } from "../lib/types";
 import { ApiClient } from "../lib/api-client";
 import { EditTaskDialog } from "./EditTaskDialog";
 import { toast } from "react-hot-toast";
-import { Card, Button } from "../ui";
+import { Card, Button } from "./ui";
 
 export const TaskCard: React.FC<{ task: Task; onUpdate: () => void }> = ({
   task,

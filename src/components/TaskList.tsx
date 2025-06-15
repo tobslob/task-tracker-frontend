@@ -4,7 +4,7 @@ import { Task, TaskListResponse } from '../lib/types';
 import { useTaskStore } from '../lib/task-store';
 import { TaskCard } from './TaskCard';
 import { TaskFilterBar } from './TaskFilterBar';
-import { Button } from '../ui';
+import { Button } from "./ui";
 
 const PAGE_SIZE = 20;
 
